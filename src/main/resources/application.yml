@@ -1,0 +1,29 @@
+logging:
+    level:
+        root: info
+        org.springframework: info
+        org.springframework.security: off
+        com.linefit.linefitgymapp: debug
+
+
+
+
+
+
+
+    datasource:
+        driverClassName: com.mysql.cj.jdbc.Driver
+        password: ${MYSQL_PASSWORD}
+        url: jdbc:mysql://localhost:3306/fitness_db?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true
+        username: ${MYSQL_USER}
+    jpa:
+        hibernate:
+            ddl-auto: update
+        open-in-view: true
+        properties:
+            hibernate:
+                dialect: org.hibernate.dialect.MySQLDialect
+                format_sql: true
+
+application:
+    JWT_SECRET: secret
