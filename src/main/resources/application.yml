@@ -7,8 +7,9 @@ logging:
 
 
 
-
-
+spring:
+    application:
+        name: JwtTokenBasedSecurity
 
 
     datasource:
