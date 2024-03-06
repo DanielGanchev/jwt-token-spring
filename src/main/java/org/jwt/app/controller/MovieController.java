@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/movies")
-public class BookController {
+public class MovieController {
   @GetMapping
   public List<Movies> all() {
     return List.of(

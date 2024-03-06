@@ -1,7 +1,9 @@
 package org.jwt.app.utils;
 
 import com.auth0.jwt.JWT;
+import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
+import com.auth0.jwt.interfaces.DecodedJWT;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import org.springframework.beans.factory.annotation.Value;
@@ -11,6 +13,8 @@ import org.springframework.stereotype.Service;
 public class JwtUtils {
   @Value("${application.JWT_SECRET}")
   private String jwtSecret;
+
+
 
   public String generate(String username) {
     var now = Instant.now();
@@ -31,5 +35,30 @@ public class JwtUtils {
         .build()
         .verify(token)
         .getSubject();
+
   }
+
+
+
+  public String refresh(String username) {
+    var now = Instant.now();
+    var tenMinutesInSeconds = 10 * 60;
+    var expiresAt = now.plus(tenMinutesInSeconds, ChronoUnit.SECONDS);
+    return JWT.create()
+        .withIssuer("self")
+        .withSubject(username)
+        .withIssuedAt(now)
+        .withExpiresAt(expiresAt)
+        .sign(Algorithm.HMAC256(jwtSecret));
+  }
+
+  public String getUsername(String token) {
+    DecodedJWT decodedJWT = JWT.decode(token);
+    return decodedJWT.getSubject();
+  }
+
+
+
+
+
 }
