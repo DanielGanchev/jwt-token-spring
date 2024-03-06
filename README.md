@@ -23,7 +23,7 @@ This project demonstrates a simple implementation of JWT-based authentication us
 -"/login" - POST
 -You login in with the registered user then get a JWT as response;
 Copy that JWT and Paste it in Authorization
-Using OAuth 2.0 as type under the token field with Bearer prefeix so you can use the logged only feauters
+Using OAuth 2.0 as type under the token field with Bearer prefeix so you can use the logged only feature
 "/movies" 
 You get response as Json 
 "{"title":"The Godfather","director":"Francis Ford Coppola"},{"title":"The Shawshank Redemption","director":"Frank Darabont"},{"title":"The Dark Knight","director":"Christopher Nolan"},{"title":"The Godfather","director":"Francis Ford Coppola"},{"title":"The Shawshank Redemption","director":"Frank Darabont"}"
